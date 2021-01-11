@@ -1,4 +1,4 @@
-# SCRIPT GET 10 IMAGE EVERY 2 HOURS
+# SCRIPT GET N IMAGE EVERY 2 HOURS
 
 ## Set virtual environment
 `python3 -m venv venv`
