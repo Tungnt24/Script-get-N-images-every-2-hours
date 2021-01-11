@@ -1,63 +1,23 @@
-# A BOT TELEGRAM SEND `N` IMAGES EVERY 2 HOURS 
+# SCRIPT GET 10 IMAGE EVERY 2 HOURS
 
-## DEPENDENCIES
-- python 3.8
-- Celery
-- pyTelegramBotAPI
-- python-dotenv
-
-## INSTALLATION
+## Set virtual environment
+`python3 -m venv venv`
+### Activate
+`. venv/bin/activate`
 ### Install requirements
 `pip install -r requirements.txt`
-or
-`poetry add requirements.txt`
-
-### Make ```.env``` file and add your configure
-
-#### Short config:
-```
-#telegram
-GROUP_ID=
-TOKEN=
-
-#unsplash
-URL=
-CLIENT_ID=
-COUNT=
-QUERY=
-ORIENTATION=
-```
-
-``Now just run rabbitmq server => BOT is working``
-
-#### Long Config:
-```
-#telegram
-GROUP_ID=
-TOKEN=
-
-#unsplash
-URL=
-CLIENT_ID=
-COUNT=
-QUERY=
-ORIENTATION=
-
-#schedule
-MINUTES=
-HOUR=
-DAY_OF_MONTH=
-MONTH=
-DAY_OF_WEEK=
-
-#rabbitmq
-RABBITMQ=
-```
 
 ### Run rabbitmq
 `sudo rabbitmq-server`
 
-# RUN
-`python3 src/main.py`
-or
-`poetry run python3 src/main.py` (if you use `poetry`)
+### Run script
+1. Open another terminal
+2. In that terminal:
+    - set environment variables  
+    `URL= unsplash api url`   
+    `CLIENT_ID = Access Key from unsplash api`  
+    `COUNT = number of image you want`  
+    `QUERY = selection to photos matching such as dog, girl, cat ....`  
+    `ORIENTATION = Filter by photo orientation. Optional. (Valid values: landscape, portrait, squarish)`  
+
+    - RUN: `celery -A src.schedule worker -B -l INFO`  
